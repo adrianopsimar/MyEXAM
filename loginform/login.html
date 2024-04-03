@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Animated Login Form | CodingNepal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="center">
+    <h1>Login</h1>
+    <form id="loginForm" method="post" onsubmit="return login()">
+      <div class="txt_field">
+        <input type="text" id="username" required>
+        <span></span>
+        <label>Username</label>
+      </div>
+      <div class="txt_field">
+        <input type="password" id="password" required>
+        <span></span>
+        <label>Password</label>
+      </div>
+      <div class="pass">Forgot Password?</div>
+      <input type="submit" value="Login">
+      <div class="signup_link">
+        Not a member? <a href="#">Signup</a>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    function login() {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      // Check password requirements
+      const hasUpperCase = /[A-Z]/.test(password);
+      const hasLowerCase = /[a-z]/.test(password);
+      const hasNumber = /\d/.test(password);
+      const hasSpecialCharacter = /[!@#$%^&*()_+]/.test(password);
+      const isMinLength = password.length >= 6;
+
+      if (!hasUpperCase || !hasLowerCase || !hasNumber || !hasSpecialCharacter || !isMinLength) {
+        alert("Password must contain at least one uppercase letter, one lowercase letter, one number, one special character, and be at least 6 characters long.");
+        return false; // Prevent form submission
+      }
+
+      // Redirect to landing page
+      window.location.href = "landing.html";
+      return false; // Prevent form submission
+    }
+  </script>
+</body>
+</html>
